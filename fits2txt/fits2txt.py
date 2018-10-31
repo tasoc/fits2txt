@@ -81,7 +81,7 @@ def fits2txt(fname, overwrite=False):
 			quality = hdu['LIGHTCURVE'].data['QUALITY']
 			
 	# Write output file:
-	with open(savefile, 'w', newline='\r\n') as fid:
+	with open(savefile, 'w') as fid:
 		fid.write("# TESS Asteroseismic Science Operations Center\n")
 		fid.write("# Created using fits2txt version %s on %s\n" % (__version__, now))
 		fid.write("# TIC identifier:    %d\n" % starid)

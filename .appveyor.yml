@@ -1,5 +1,10 @@
 build: false
 
+branches:
+  only:
+    - master
+    - devel
+
 environment:
   matrix:
     - PYTHON_VERSION: 2.7
@@ -30,5 +35,23 @@ install:
 test_script:
   - "pytest"
 
+ #---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
 artifacts:
   - path: 'dist/*'
+  
+#---------------------------------#
+#     deployment configuration    #
+#---------------------------------#
+
+#deploy:
+#  # Deploy to GitHub Releases
+#  - provider: GitHub
+#    artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
+#    draft: false
+#    prerelease: false
+#    on:
+#      branch: master                # release from master branch only
+#      appveyor_repo_tag: true       # deploy on tag push only
