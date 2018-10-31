@@ -16,7 +16,7 @@ import glob
 
 __version__ = '0.1'
 
-def convert(fname, overwrite=False):
+def fits2txt(fname, overwrite=False):
 
 	bname = os.path.basename(fname)
 	bname = bname.replace('.fits.gz', '').replace('.fits', '')
@@ -127,6 +127,6 @@ if __name__ == '__main__':
 	for fname in glob.iglob(args.file, recursive=args.recursive):
 		if not os.path.isfile(fname): continue
 		if fname.endswith('.fits') or fname.endswith('.fits.gz'):
-			convert(fname, overwrite=args.force)
+			fits2txt(fname, overwrite=args.force)
 		elif not args.quiet:
 			print("Skipping non-FITS file '%s'." % fname)
