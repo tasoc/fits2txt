@@ -18,7 +18,9 @@ install:
   - "conda create -q -n test-environment python=%PYTHON_VERSION% numpy astropy pytest"
   - activate test-environment
   - pip install pyinstaller
-  - make
+  - pyi-makespec --onefile --specpath . fits2txt/fits2txt.py
+#  - echo "import sys; sys.setrecursionlimit(10000)" | cat - fits2txt.spec > fits2txt.tmp.spec && mv fits2txt.tmp.spec fits2txt.spec
+  - pyinstaller --onefile fits2txt.spec
 
 test_script:
   - "pytest"
