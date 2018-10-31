@@ -23,7 +23,7 @@ def fits2txt(fname, overwrite=False):
 	savefile = os.path.join(os.path.dirname(fname), bname + '.dat')
 	
 	if not overwrite and os.path.exists(savefile):
-		return
+		return savefile
 
 	now = datetime.now()
 
@@ -110,6 +110,9 @@ def fits2txt(fname, overwrite=False):
 				quality[i]
 			))
 		fid.write("#-------------------------------------------------\n")
+		
+	return savefile
+
 
 if __name__ == '__main__':
 	# Parse command line arguments:

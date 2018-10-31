@@ -17,6 +17,11 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - "conda create -q -n test-environment python=%PYTHON_VERSION% numpy astropy pytest"
   - activate test-environment
+
+  # Upgrade to the latest version of pip to avoid it displaying warnings
+  # about it being out of date.
+  - "python -m pip install --upgrade pip"
+
   - pip install pyinstaller
   - pyi-makespec --onefile --specpath . fits2txt/fits2txt.py
 #  - echo "import sys; sys.setrecursionlimit(10000)" | cat - fits2txt.spec > fits2txt.tmp.spec && mv fits2txt.tmp.spec fits2txt.spec
@@ -24,3 +29,6 @@ install:
 
 test_script:
   - "pytest"
+
+artifacts:
+  - path: 'dist/*'
