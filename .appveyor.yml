@@ -1,0 +1,23 @@
+build: false
+
+environment:
+  matrix:
+    - PYTHON_VERSION: 2.7
+      MINICONDA: C:\Miniconda
+    - PYTHON_VERSION: 3.6
+      MINICONDA: C:\Miniconda3
+
+init:
+  - "ECHO %PYTHON_VERSION% %MINICONDA%"
+
+install:
+  - "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%MINICONDA%\\Library\\bin;%PATH%"
+  - "ECHO %PATH%"
+  - where conda
+  - conda config --set always_yes yes --set changeps1 no
+  - "conda create -q -n test-environment python=%PYTHON_VERSION% numpy astropy pytest"
+  - activate test-environment
+  - pip install pyinstaller
+
+test_script:
+  - "pytest"
