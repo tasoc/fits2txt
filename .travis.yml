@@ -1,0 +1,18 @@
+os:
+	- linux
+	- osx
+	- windows
+python:
+	- 3.6
+before_install:
+	- pip install pyinstaller
+install:
+    - make
+#deploy:
+#   skip_cleanup: true
+#	provider: releases
+#	api_key: "GITHUB OAUTH TOKEN"
+#	file:
+#       - "dist/py2fits.exe"
+#	on:
+#		tags: true
