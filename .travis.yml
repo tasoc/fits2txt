@@ -2,8 +2,9 @@ language: python
 os:
   - linux
   - osx
-  - windows
+#  - windows
 python:
+  - "2.7"
   - "3.6"
 before_install:
   - pip install pyinstaller
