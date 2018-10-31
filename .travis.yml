@@ -1,13 +1,18 @@
+language: python
 os:
-    - linux
-    - osx
-    - windows
+  - linux
+  - osx
+  - windows
 python:
-    - 3.6
+  - "3.6"
 before_install:
-    - pip install pyinstaller
+  - pip install pyinstaller
 install:
-    - make
+  - make
+branches:
+  only:
+    - master
+    - devel
 #deploy:
 #   skip_cleanup: true
 #	provider: releases
