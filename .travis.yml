@@ -6,19 +6,18 @@ os:
 python:
   - "2.7"
   - "3.6"
-addons:
-  homebrew:
-    packages:
-      - python==$(TRAVIS_PYTHON_VERSION)
+#addons:
+#  homebrew:
+#    packages:
+#      - python==$(TRAVIS_PYTHON_VERSION)
 before_install:
 #  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
 #      brew install python
 #    fi
-  - pip install -r requirements.txt
   - pip install -U setuptools
+  - pip install -r requirements.txt
   - pip install pyinstaller
 install:
-  - python --version
   - make
 script:
   - pytest
@@ -27,10 +26,10 @@ branches:
     - master
     - devel
 #deploy:
-#   skip_cleanup: true
-#	provider: releases
-#	api_key: "GITHUB OAUTH TOKEN"
-#	file:
-#       - "dist/py2fits.exe"
-#	on:
-#		tags: true
+#  skip_cleanup: true
+#	 provider: releases
+#	 api_key: "GITHUB OAUTH TOKEN"
+#	 file:
+#    - "dist/fits2txt"
+#	 on:
+#    tags: true
