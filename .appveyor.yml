@@ -40,18 +40,20 @@ test_script:
 #---------------------------------#
 
 artifacts:
-  - path: 'dist/*'
-  
+  - path: 'dist/fits2txt.exe'
+
 #---------------------------------#
 #     deployment configuration    #
 #---------------------------------#
 
-#deploy:
-#  # Deploy to GitHub Releases
-#  - provider: GitHub
-#    artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
-#    draft: false
-#    prerelease: false
-#    on:
-#      branch: master                # release from master branch only
-#      appveyor_repo_tag: true       # deploy on tag push only
+deploy:
+  provider: GitHub
+  description: 'fits2txt $(APPVEYOR_REPO_TAG_NAME)'
+  auth_token:
+    secure: gavTSACabClMchdBItGcdrwEG2Sfv/3D3l8I54uXGOVy2sszSXreF2SM7/asJln2
+  artifact: /.*\.exe/           # upload all NuGet packages to release assets
+  draft: true
+  prerelease: false
+  on:
+    branch: master              # release from master branch only
+    appveyor_repo_tag: true     # deploy on tag push only
